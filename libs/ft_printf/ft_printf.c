@@ -6,10 +6,10 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:22:50 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/10/05 19:12:00 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:36:20 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
 int	putchar_printf(char c)
 {

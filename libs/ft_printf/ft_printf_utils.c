@@ -6,12 +6,12 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 02:58:14 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/10/05 19:31:03 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:44:39 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_strlen_printf(char *str)
+size_t	ft_strlen(char *str)
 {
 	size_t	count;
 
