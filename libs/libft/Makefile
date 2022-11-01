@@ -1,5 +1,9 @@
 NAME = libft.a
 
+GREEN = \033[0;32m
+RESET = \033[0m
+YELLOW = \033[0;33m
+
 CFLAGS = -Wall -Wextra -Werror
 CFILES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
 		 ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c ft_memmove.c \
@@ -27,22 +31,26 @@ BONUS_OBJ = ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_ba
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
 
 $(OBJS) : $(CFILES)
-	cc $(CFLAGS) -I ./ -c $(CFILES)
+	@echo "$(YELLOW)Creating Libft library...$(RESET)"
+	@cc $(CFLAGS) -I ./ -c $(CFILES)
+	@echo "$(GREEN)Libft library created!$(RESET)"
 
 $(BONUS_OBJ) :
-	cc $(CFLAGS) -I ./ -c $(BONUS_FILES)
-	ar rcs $(NAME) $(BONUS_OBJ)
+	@cc $(CFLAGS) -I ./ -c $(BONUS_FILES)
+	@ar rcs $(NAME) $(BONUS_OBJ)
 
 bonus : $(BONUS_OBJ)
 
 clean :
-	rm -f $(OBJS) $(BONUS_OBJ)
+	@rm -f $(OBJS) $(BONUS_OBJ)
+	@echo "$(GREEN)Libft objects removed successfully !$(RESET)"
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "$(GREEN)Everything related to Libft removed successfully !$(RESET)"
 
 re : fclean all
 
