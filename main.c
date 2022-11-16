@@ -1,13 +1,5 @@
 #include "./libs/mlx/mlx.h"
-
-typedef struct	s_data
-{
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}				t_data;
+#include "fdf.h"
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -17,23 +9,43 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+int	ft_close(t_vars *vars)
+{
+	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_display(vars->mlx);
+	if (vars->mlx)
+		free(vars->mlx);
+	exit(0);
+}
+
+int	ft_keyhook(int keycode, t_vars *vars)
+{
+	if (keycode == 65307)
+		ft_close(vars);
+	return (0);
+}
+
 int main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
-	int		x_border;
-	int		y_border;
-	t_data	img;
+	t_vars		vars;
+	t_data		img;
+	t_pos		*pos0;
+	t_pos		*pos1;
 
-	x_border = 50;
-	y_border = 50;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "fdf");
-	img.img = mlx_new_image(mlx, 1920, 1080);
+	pos0 = malloc(sizeof(t_pos));
+	pos1 = malloc(sizeof(t_pos));
+	pos0->x = 0;
+	pos0->y = 0;
+	pos1->x = 500;
+	pos1->y = 500;
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, HEIGHT, WIDTH, "fdf");
+	img.img = mlx_new_image(vars.mlx, HEIGHT, WIDTH);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	for (int i = 0; i <= x_border; i++)
-		for (int j = 0; j <= y_border; j++)
-			my_mlx_pixel_put(&img, i, j, 0x0099FF00);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	ft_plot_line(pos0, pos1, &img);
+	mlx_key_hook(vars.win, ft_keyhook, &vars);
+	mlx_hook(vars.win, 17, 1L<<0, &ft_close, &vars);
+	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
+	mlx_destroy_image(vars.mlx, img.img);
+	mlx_loop(vars.mlx);
 }
