@@ -6,13 +6,13 @@
 #    By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 18:36:24 by fnacarel          #+#    #+#              #
-#    Updated: 2022/11/16 20:19:04 by fnacarel         ###   ########.fr        #
+#    Updated: 2022/11/17 20:10:03 by fnacarel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = fdf
 LIBFDF = libfdf.a
 
-SRCS = bresenham.c
+SRCS = bresenham.c fdf_utils00.c initwindow.c
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 LIBFT_PATH = ./libs/libft
 GNL_PATH = ./libs/get_next_line
@@ -32,7 +32,7 @@ $(NAME) : $(OBJS)
 	@cc $(FLAGS) $(OBJS) -o $(NAME) main.c $(PATH_LIBS) $(LIBS)
 
 $(OBJS) :
-	@cc -c -o $(OBJS) $(SRCS)
+	@cc $(FLAGS) -I ./ -c $(SRCS)
 
 clean :
 	@rm -f $(OBJS) $(LIBFDF)
