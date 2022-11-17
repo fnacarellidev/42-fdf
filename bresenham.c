@@ -54,7 +54,7 @@ void	ft_plot_line_low(t_pos *pos0, t_pos *pos1, t_data *data)
 	int	diff_x;
 	int	diff_y;
 
-	i = 0;
+	i = pos0->x;
 	yi = 1;
 	diff_y = pos1->y - pos0->y;
 	diff_x = pos1->x - pos0->x;
