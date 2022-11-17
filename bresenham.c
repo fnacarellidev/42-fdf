@@ -37,10 +37,10 @@ void	ft_plot_line_high(t_pos *pos0, t_pos *pos1, t_data *data)
 		if (d > 0)
 		{
 			x = x + xi;
-			d = d + (2 * (diff_y - diff_x));
+			d = d + (2 * (diff_x - diff_y));
 		}
 		else
-			d = d + 2 * diff_y;
+			d = d + 2 * diff_x;
 		i++;
 	}
 }
