@@ -65,7 +65,7 @@ void	ft_plot_line_low(t_pos *pos0, t_pos *pos1, t_data *data)
 	}
 	d = (2 * diff_y) - diff_x;
 	y = pos0->y;
-	while (i <= pos0->x)
+	while (i <= pos1->x)
 	{
 		my_mlx_pixel_put(data, i, y, COLOR);
 		if (d > 0)
