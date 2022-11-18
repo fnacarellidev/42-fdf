@@ -6,18 +6,50 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 18:43:19 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/17 20:57:32 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/17 21:52:45 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
+
+void	set_values(t_pos **pos, t_str *str, char *file, t_vars *vars, t_map map)
+{
+	int	i;
+	int	j;
+	int	fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		ft_close(vars);
+	i = 0;
+	while (1)
+	{
+		j = 0;
+		strings->gnl = get_next_line(fd);
+		if (strings->gnl == NULL)
+			break ; // @TODO Not sure if this will work, have to worry about frees and stuff
+		strings->split_ret = ft_split(strings->gnl, ' ');
+		while (j < map.rows)
+		{
+			pos[i][j] = malloc(sizeof(t_pos));
+			pos[i][j].x = i;
+			pos[i][j].y = j;
+			pos[i][j].z = ft_atoi(strings->split_ret[j]);
+			j++;
+		}
+		i++;
+	}
+}
 
 int	split_size(char **str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
-		i++;
+	if (str)
+	{
+		while (str[i])
+			i++;
+	}
 	return (i);
 }
 
