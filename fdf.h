@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 12:13:55 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/17 21:11:04 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/17 21:44:55 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FDF_H
@@ -31,6 +31,18 @@ typedef struct	s_vars
 	void	*win;
 }				t_vars;
 
+typedef struct	s_map
+{
+	int		rows;
+	int		columns;
+}				t_map;
+
+typedef struct	s_str
+{
+	char	*gnl_ret;
+	char	**split_ret;
+}				t_str;
+
 typedef struct	s_pos
 {
 	int		x;
@@ -42,9 +54,9 @@ typedef struct	s_data
 {
 	void	*img;
 	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
 	int		endian;
+	int		line_length;
+	int		bits_per_pixel;
 }				t_data;
 
 int		validate_input(char *argv);
