@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 12:13:55 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/17 21:44:55 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/19 23:59:56 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FDF_H
@@ -59,15 +59,20 @@ typedef struct	s_data
 	int		bits_per_pixel;
 }				t_data;
 
-int		validate_input(char *argv);
-int		ft_close(t_vars *vars);
-int		ft_keyhook(int keycode, t_vars *vars);
-int		split_size(char **str);
-void	init_window_and_hooks(t_vars *vars);
-void	init_image(t_data *img, t_vars *vars);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	ft_plot_line_high(t_pos *pos0, t_pos *pos1, t_data *data);
 void	ft_plot_line_low(t_pos *pos0, t_pos *pos1, t_data *data);
 void	ft_plot_line(t_pos *pos0, t_pos *pos1, t_data *data);
+void	set_rows(char *argv, t_map *map);
+void	set_columns(char *argv, t_map *map);
+void	free_split(char **splitted);
+void	set_values(t_pos **pos, t_str *str, char *file, t_vars *vars, t_map map);
+void	init_window_and_hooks(t_vars *vars);
+void	init_image(t_data *img, t_vars *vars);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int		count_lines(char *argv);
+int		number_of_columns(char **str);
+int		validate_input(char *argv);
+int		ft_close(t_vars *vars);
+int		ft_keyhook(int keycode, t_vars *vars);
 
 #endif
