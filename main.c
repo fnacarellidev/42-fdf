@@ -10,24 +10,36 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int main(int argc, char **argv)
 {
+	int			i;
 	t_vars		vars;
 	t_data		img;
 	t_str		*str;
 	t_pos		**pos;
 	t_map		*map;
 
+	i = 0;
 	if (argc != 2)
 		exit(0);
 	validate_input(argv[1]);
 	str = malloc(sizeof(t_str));
 	map = malloc(sizeof(t_map));
-	set_rows(argv[1], map);
-	set_columns(argv[1], map);
-	pos = malloc(sizeof(t_pos) * map->rows);
+	set_rows_and_columns(argv[1], map);
+	pos = ft_calloc(sizeof(t_pos), map->rows);
 	set_values(pos, str, argv[1], &vars, *map);
 	init_window_and_hooks(&vars);
 	init_image(&img, &vars);
+	transform_positions(pos, *map);
+	multiply_matrix(pos, *map);
+	connect_both_axis(pos, &img, *map);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
+	while (pos[i])
+	{
+		free(pos[i]);
+		i++;
+	}
+	free(pos);
+	free(map);
+	free(str);
 	mlx_destroy_image(vars.mlx, img.img);
-	mlx_loop(vars.mlx);
+	init_loop_and_hooks(&vars);
 }
