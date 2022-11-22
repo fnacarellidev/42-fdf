@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:55:26 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/19 18:19:24 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/21 21:38:28 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -22,7 +22,7 @@ int	ft_close(t_vars *vars)
 
 int	ft_keyhook(int keycode, t_vars *vars)
 {
-	if (keycode == 65307)
+	if (keycode == ESC_KEYCODE)
 		ft_close(vars);
 	return (0);
 }
@@ -31,9 +31,14 @@ void	init_window_and_hooks(t_vars *vars)
 {
 	vars->mlx = mlx_init();
 	vars->win = mlx_new_window(vars->mlx, WIDTH, HEIGHT, "fdf");
+}
+
+void	init_loop_and_hooks(t_vars *vars)
+{
 	mlx_key_hook(vars->win, &ft_keyhook, vars);
 	mlx_hook(vars->win, 17, 1L<<0, &ft_close, vars);
 	mlx_loop(vars->mlx);
+
 }
 
 void	init_image(t_data *img, t_vars *vars)
