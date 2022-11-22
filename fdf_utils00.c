@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 18:43:19 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/19 22:43:36 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/21 17:18:40 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -34,11 +34,30 @@ void	set_values(t_pos **pos, t_str *str, char *file, t_vars *vars, t_map map)
 			pos[row][col].x = col;
 			pos[row][col].y = row;
 			pos[row][col].z = ft_atoi(str->split_ret[col]);
-			ft_printf("pos[%d][%d].x = %d\npos[%d][%d].y = %d\npos[%d][%d].z = %d\n\n", row, col, pos[row][col].x, row, col, pos[row][col].y, row, col, pos[row][col].z);
 			col++;
 		}
 		free(str->gnl_ret);
 		free_split(str->split_ret);
+		row++;
+	}
+}
+
+void	multiply_matrix(t_pos **pos, t_map map)
+{
+	int	row;
+	int	col;
+
+	row = 0;
+	while (row < map.rows)
+	{
+		col = 0;
+		while (col < map.columns)
+		{
+			pos[row][col].x *= 10;
+			pos[row][col].y *= 10;
+			pos[row][col].z *= 10;
+			col++;
+		}
 		row++;
 	}
 }
