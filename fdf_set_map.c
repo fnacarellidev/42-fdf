@@ -6,25 +6,22 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:49:43 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/21 21:38:21 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/23 21:07:52 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
 
-int	get_number_of_columns(char **str)
-{
-	int	i;
+static void	set_columns(char *argv, t_map *map);
+static void	set_rows(char *argv, t_map *map);
+static int	get_number_of_columns(char **str);
 
-	i = 0;
-	if (str)
-	{
-		while (str[i])
-			i++;
-	}
-	return (i);
+void	set_rows_and_columns(char *argv, t_map *map)
+{
+	set_rows(argv, map);
+	set_columns(argv, map);
 }
 
-void	set_columns(char *argv, t_map *map)
+static void	set_columns(char *argv, t_map *map)
 {
 	int		i;
 	int		fd;
@@ -44,7 +41,7 @@ void	set_columns(char *argv, t_map *map)
 		{
 			split = ft_split(str, ' ');
 			map->columns = get_number_of_columns(split);
-			free_split(split);
+			free_matrix((void **)split);
 		}
 		free(str);
 		i++;
@@ -52,7 +49,7 @@ void	set_columns(char *argv, t_map *map)
 	close(fd);
 }
 
-void	set_rows(char *argv, t_map *map)
+static void	set_rows(char *argv, t_map *map)
 {
 	int		i;
 	int		fd;
@@ -74,32 +71,16 @@ void	set_rows(char *argv, t_map *map)
 	close(fd);
 }
 
-void	set_rows_and_columns(char *argv, t_map *map)
+static int	get_number_of_columns(char **str)
 {
-	set_rows(argv, map);
-	set_columns(argv, map);
-}
+	int	i;
 
-int	validate_input(char *argv)
-{
-	char	*str;
-
-	str = ft_strrchr(argv, '.');
-	if (ft_strlen(str) != 4)
+	i = 0;
+	if (str)
 	{
-		ft_printf("File must be of .fdf extension.\n");
-		exit(1);
+		while (str[i])
+			i++;
 	}
-	else if (ft_strlen(argv) == 4)
-	{
-		ft_printf("File can't be named only .fdf\n");
-		exit(1);
-	}
-	if (!(ft_strncmp(str, ".fdf", 4) == 0))
-	{
-		ft_printf("File must be of .fdf extension.\n");
-		exit(1);
-	}
-	return (1);
+	return (i);
 }
 
