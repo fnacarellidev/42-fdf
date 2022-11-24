@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:22:56 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/21 21:54:38 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/24 00:27:16 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 # include <stdlib.h>
 # include <unistd.h>
-# define BUFFER_SIZE 1
+# define BUFFER_SIZE 10000
 
 size_t	ft_strlen_gnl(char *str);
 void	ft_strcpy(char *dest, const char *src);
