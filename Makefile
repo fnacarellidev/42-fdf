@@ -6,13 +6,15 @@
 #    By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 18:36:24 by fnacarel          #+#    #+#              #
-#    Updated: 2022/11/23 20:30:58 by fnacarel         ###   ########.fr        #
+#    Updated: 2022/11/24 09:12:40 by fnacarel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = fdf
 LIBFDF = libfdf.a
-SRCS = bresenham.c fdf_utils00.c initwindow.c fdf_set_map.c connect_axis.c \
-	   isometric_projection.c move_map.c input_validation.c
+SRCS = bresenham.c fdf_utils00.c window_keyhook.c fdf_set_map.c connect_axis.c \
+	   isometric_projection.c input_validation.c \
+	   drawing_first_steps.c move_map.c zoom.c
+
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 LIBFT_PATH = ./libs/libft
 GNL_PATH = ./libs/get_next_line
