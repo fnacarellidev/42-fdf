@@ -6,21 +6,17 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 18:43:19 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/23 20:35:21 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/24 00:20:12 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
 
-void	set_values(t_pos **pos, t_str *str, char *argv, t_map map)
+void	set_values(t_pos **pos, t_str *str, int fd, t_map map)
 {
-	int	fd;
 	int	col;
 	int	row;
 
 	row = 0;
-	fd = open(argv, O_RDONLY);
-	if (fd == -1)
-		exit(1);
 	while (1)
 	{
 		col = 0;
