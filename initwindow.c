@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:55:26 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/21 21:38:28 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/23 19:46:23 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -24,10 +24,13 @@ int	ft_keyhook(int keycode, t_vars *vars)
 {
 	if (keycode == ESC_KEYCODE)
 		ft_close(vars);
+	/* if (keycode == H_KEYCODE || keycode == J_KEYCODE || keycode == K_KEYCODE */
+	/* 	|| keycode == L_KEYCODE) */
+	/* 	translate_img(); */
 	return (0);
 }
 
-void	init_window_and_hooks(t_vars *vars)
+void	init_window(t_vars *vars)
 {
 	vars->mlx = mlx_init();
 	vars->win = mlx_new_window(vars->mlx, WIDTH, HEIGHT, "fdf");
@@ -36,14 +39,13 @@ void	init_window_and_hooks(t_vars *vars)
 void	init_loop_and_hooks(t_vars *vars)
 {
 	mlx_key_hook(vars->win, &ft_keyhook, vars);
-	mlx_hook(vars->win, 17, 1L<<0, &ft_close, vars);
+	mlx_hook(vars->win, 17, 1L << 0, &ft_close, vars);
 	mlx_loop(vars->mlx);
-
 }
 
 void	init_image(t_data *img, t_vars *vars)
 {
 	img->img = mlx_new_image(vars->mlx, WIDTH, HEIGHT);
-	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, 
+	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
 }
