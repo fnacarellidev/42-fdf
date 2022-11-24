@@ -6,21 +6,21 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:51:15 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/23 20:26:39 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/24 01:07:47 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
 
-static void	connect_vertical_axis(t_pos **pos, t_data *img, t_map map);
-static void	connect_horizontal_axis(t_pos **pos, t_data *img, t_map map);
+static void	connect_vertical_axis(t_pos **pos, t_win *win, t_map map);
+static void	connect_horizontal_axis(t_pos **pos, t_win *win, t_map map);
 
-void	connect_both_axis(t_pos **pos, t_data *img, t_map map)
+void	connect_both_axis(t_pos **pos, t_win *win, t_map map)
 {
-	connect_vertical_axis(pos, img, map);
-	connect_horizontal_axis(pos, img, map);
+	connect_vertical_axis(pos, win, map);
+	connect_horizontal_axis(pos, win, map);
 }
 
-static void	connect_vertical_axis(t_pos **pos, t_data *img, t_map map)
+static void	connect_vertical_axis(t_pos **pos, t_win *win, t_map map)
 {
 	int	i;
 	int	j;
@@ -31,14 +31,14 @@ static void	connect_vertical_axis(t_pos **pos, t_data *img, t_map map)
 		j = 0;
 		while (j < map.rows - 1)
 		{
-			ft_plot_line(&pos[j][i], &pos[j + 1][i], img);
+			ft_plot_line(&pos[j][i], &pos[j + 1][i], win);
 			j++;
 		}
 		i++;
 	}
 }
 
-static void	connect_horizontal_axis(t_pos **pos, t_data *img, t_map map)
+static void	connect_horizontal_axis(t_pos **pos, t_win *win, t_map map)
 {
 	int	i;
 	int	j;
@@ -49,7 +49,7 @@ static void	connect_horizontal_axis(t_pos **pos, t_data *img, t_map map)
 		j = 0;
 		while (j < map.columns - 1)
 		{
-			ft_plot_line(&pos[i][j], &pos[i][j + 1], img);
+			ft_plot_line(&pos[i][j], &pos[i][j + 1], win);
 			j++;
 		}
 		i++;

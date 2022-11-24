@@ -6,35 +6,35 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:14:19 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/23 22:18:04 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/24 08:54:04 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
 
 static void	update_line_high(int *diff, int *x, int deltas[2], int xi);
 static void	update_line_low(int *diff, int *y, int deltas[2], int yi);
-static void	ft_plot_line_low(t_pos *pos0, t_pos *pos1, t_data *img);
-static void	ft_plot_line_high(t_pos *pos0, t_pos *pos1, t_data *img);
+static void	ft_plot_line_low(t_pos *pos0, t_pos *pos1, t_win *win);
+static void	ft_plot_line_high(t_pos *pos0, t_pos *pos1, t_win *win);
 
-void	ft_plot_line(t_pos *pos0, t_pos *pos1, t_data *img)
+void	ft_plot_line(t_pos *pos0, t_pos *pos1, t_win *win)
 {
 	if (abs(pos1->y - pos0->y) < abs(pos1->x - pos0->x))
 	{
 		if (pos0->x > pos1->x)
-			ft_plot_line_low(pos1, pos0, img);
+			ft_plot_line_low(pos1, pos0, win);
 		else
-			ft_plot_line_low(pos0, pos1, img);
+			ft_plot_line_low(pos0, pos1, win);
 	}
 	else
 	{
 		if (pos0->y > pos1->y)
-			ft_plot_line_high(pos1, pos0, img);
+			ft_plot_line_high(pos1, pos0, win);
 		else
-			ft_plot_line_high(pos0, pos1, img);
+			ft_plot_line_high(pos0, pos1, win);
 	}
 }
 
-static void	ft_plot_line_high(t_pos *pos0, t_pos *pos1, t_data *img)
+static void	ft_plot_line_high(t_pos *pos0, t_pos *pos1, t_win *win)
 {
 	int	deltas[2];
 	int	diff;
@@ -55,13 +55,13 @@ static void	ft_plot_line_high(t_pos *pos0, t_pos *pos1, t_data *img)
 	x = pos0->x;
 	while (i <= pos1->y)
 	{
-		my_mlx_pixel_put(img, x, i, COLOR);
+		my_mlx_pixel_put(win, x, i, pos1->color);
 		update_line_high(&diff, &x, deltas, xi);
 		i++;
 	}
 }
 
-static void	ft_plot_line_low(t_pos *pos0, t_pos *pos1, t_data *img)
+static void	ft_plot_line_low(t_pos *pos0, t_pos *pos1, t_win *win)
 {
 	int	deltas[2];
 	int	diff;
@@ -82,7 +82,7 @@ static void	ft_plot_line_low(t_pos *pos0, t_pos *pos1, t_data *img)
 	y = pos0->y;
 	while (i <= pos1->x)
 	{
-		my_mlx_pixel_put(img, i, y, COLOR);
+		my_mlx_pixel_put(win, i, y, pos1->color);
 		update_line_low(&diff, &y, deltas, yi);
 		i++;
 	}
