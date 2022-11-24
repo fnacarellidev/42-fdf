@@ -6,14 +6,13 @@
 #    By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 18:36:24 by fnacarel          #+#    #+#              #
-#    Updated: 2022/11/21 21:08:09 by fnacarel         ###   ########.fr        #
+#    Updated: 2022/11/23 20:30:58 by fnacarel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = fdf
 LIBFDF = libfdf.a
-
 SRCS = bresenham.c fdf_utils00.c initwindow.c fdf_set_map.c connect_axis.c \
-	   isometric_projection.c
+	   isometric_projection.c move_map.c input_validation.c
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 LIBFT_PATH = ./libs/libft
 GNL_PATH = ./libs/get_next_line
@@ -48,11 +47,9 @@ fclean : clean
 	@make fclean -C $(MLX_PATH) --no-print-directory
 
 re : fclean all
+	@make clean
 
-revalg : fclean all
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) txt.fdf
-
-regdb : fclean all
-	gdb --args $(NAME) txt.fdf
+rerun : fclean all
+	./$(NAME) ~/Downloads/maps/test_maps/42.fdf
 
 .PHONY : all clean fclean re
