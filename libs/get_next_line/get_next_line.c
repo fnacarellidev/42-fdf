@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 20:30:28 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/21 15:18:53 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/24 03:36:40 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
