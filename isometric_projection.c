@@ -6,12 +6,13 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:48:28 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/22 21:51:11 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/24 00:25:06 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
 
-static int	solve_for_x_axis(t_pos pos);
+static void	iso(t_pos *pos, int x, int y);
+static int	solve_for_x_axis(t_pos pos, int x);
 static int	solve_for_z_axis(t_pos pos);
 
 void	transform_positions(t_pos **pos, t_map map)
@@ -19,6 +20,8 @@ void	transform_positions(t_pos **pos, t_map map)
 	int	row;
 	int	col;
 	int	val;
+	int	store_x;
+	int	store_y;
 
 	row = 0;
 	val = HEIGHT / sqrt(pow(map.columns, 2) + pow(map.rows, 2));
@@ -27,14 +30,23 @@ void	transform_positions(t_pos **pos, t_map map)
 		col = 0;
 		while (col < map.columns)
 		{
+			store_x = pos[row][col].x;
+			store_y = pos[row][col].y;
 			pos[row][col].x = solve_for_z_axis(pos[row][col]);
-			pos[row][col].y = solve_for_x_axis(pos[row][col]);
+			pos[row][col].y = solve_for_x_axis(pos[row][col], store_x);
+			iso(&pos[row][col], store_x, store_y);
 			pos[row][col].y += HEIGHT / 2 - (map.rows / 2 * val);
 			pos[row][col].x += WIDTH / 2 - (map.columns / 5 * val);
 			col++;
 		}
 		row++;
 	}
+}
+
+static void	iso(t_pos *pos, int x, int y)
+{
+	pos->x = (x - y) * cos(0.523599);
+	pos->y = -pos->z + (x + y) * sin(0.523599);
 }
 
 static int	solve_for_z_axis(t_pos pos)
@@ -54,7 +66,7 @@ static int	solve_for_z_axis(t_pos pos)
 	return (ret);
 }
 
-static int	solve_for_x_axis(t_pos pos)
+static int	solve_for_x_axis(t_pos pos, int x)
 {
 	int		res;
 	double	sin_alpha;
@@ -66,7 +78,7 @@ static int	solve_for_x_axis(t_pos pos)
 	sin_theta = sin(M_PI / 4);
 	cos_alpha = cos(asin(tan(M_PI / 6)));
 	cos_theta = cos(M_PI / 4);
-	res = (int)(sin_alpha * sin_theta * pos.x) + (cos_theta * pos.y)
+	res = (int)(sin_alpha * sin_theta * x) + (cos_theta * pos.y)
 		- (sin_alpha * cos_theta * pos.z);
 	return (res);
 }
