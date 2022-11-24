@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:49:43 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/23 21:07:52 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/23 22:18:39 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -83,4 +83,3 @@ static int	get_number_of_columns(char **str)
 	}
 	return (i);
 }
-

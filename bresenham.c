@@ -6,15 +6,35 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:14:19 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/21 17:51:55 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/11/23 22:18:04 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
 
 static void	update_line_high(int *diff, int *x, int deltas[2], int xi);
 static void	update_line_low(int *diff, int *y, int deltas[2], int yi);
+static void	ft_plot_line_low(t_pos *pos0, t_pos *pos1, t_data *img);
+static void	ft_plot_line_high(t_pos *pos0, t_pos *pos1, t_data *img);
 
-void	ft_plot_line_high(t_pos *pos0, t_pos *pos1, t_data *img)
+void	ft_plot_line(t_pos *pos0, t_pos *pos1, t_data *img)
+{
+	if (abs(pos1->y - pos0->y) < abs(pos1->x - pos0->x))
+	{
+		if (pos0->x > pos1->x)
+			ft_plot_line_low(pos1, pos0, img);
+		else
+			ft_plot_line_low(pos0, pos1, img);
+	}
+	else
+	{
+		if (pos0->y > pos1->y)
+			ft_plot_line_high(pos1, pos0, img);
+		else
+			ft_plot_line_high(pos0, pos1, img);
+	}
+}
+
+static void	ft_plot_line_high(t_pos *pos0, t_pos *pos1, t_data *img)
 {
 	int	deltas[2];
 	int	diff;
@@ -41,7 +61,7 @@ void	ft_plot_line_high(t_pos *pos0, t_pos *pos1, t_data *img)
 	}
 }
 
-void	ft_plot_line_low(t_pos *pos0, t_pos *pos1, t_data *img)
+static void	ft_plot_line_low(t_pos *pos0, t_pos *pos1, t_data *img)
 {
 	int	deltas[2];
 	int	diff;
@@ -65,24 +85,6 @@ void	ft_plot_line_low(t_pos *pos0, t_pos *pos1, t_data *img)
 		my_mlx_pixel_put(img, i, y, COLOR);
 		update_line_low(&diff, &y, deltas, yi);
 		i++;
-	}
-}
-
-void	ft_plot_line(t_pos *pos0, t_pos *pos1, t_data *img)
-{
-	if (abs(pos1->y - pos0->y) < abs(pos1->x - pos0->x))
-	{
-		if (pos0->x > pos1->x)
-			ft_plot_line_low(pos1, pos0, img);
-		else
-			ft_plot_line_low(pos0, pos1, img);
-	}
-	else
-	{
-		if (pos0->y > pos1->y)
-			ft_plot_line_high(pos1, pos0, img);
-		else
-			ft_plot_line_high(pos0, pos1, img);
 	}
 }
 
