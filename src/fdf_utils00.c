@@ -6,14 +6,13 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 18:43:19 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/24 08:20:51 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:57:16 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "fdf.h"
+#include "../include/fdf.h"
 
 static char	**read_entire_archive(int fd, int rows);
 static void	put_values_into_matrix(t_pos *pos, int row, int col, char **str);
-int			ft_atoi_hex(const char *str);
 
 void	set_values(t_pos **pos, int fd, t_map map)
 {

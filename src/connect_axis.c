@@ -6,10 +6,10 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:51:15 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/24 01:07:47 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:57:44 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "fdf.h"
+#include "../include/fdf.h"
 
 static void	connect_vertical_axis(t_pos **pos, t_win *win, t_map map);
 static void	connect_horizontal_axis(t_pos **pos, t_win *win, t_map map);

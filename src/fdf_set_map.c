@@ -6,10 +6,10 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:49:43 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/24 03:56:45 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:57:52 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "fdf.h"
+#include "../include/fdf.h"
 
 static void	set_columns(char *argv, t_map *map);
 static void	set_rows(char *argv, t_map *map);

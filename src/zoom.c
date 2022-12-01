@@ -6,10 +6,10 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:03:10 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/24 09:31:45 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:57:37 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "fdf.h"
+#include "../include/fdf.h"
 
 static void	divide_for_each_coordinate(t_pos **pos, t_map map);
 static void	multiply_for_each_coordinate(t_pos **pos, t_map map);

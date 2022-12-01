@@ -6,10 +6,10 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:48:28 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/24 00:25:06 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:57:23 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "fdf.h"
+#include "../include/fdf.h"
 
 static void	iso(t_pos *pos, int x, int y);
 static int	solve_for_x_axis(t_pos pos, int x);

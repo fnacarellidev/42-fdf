@@ -6,10 +6,10 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:14:19 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/24 08:54:04 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:56:58 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "fdf.h"
+#include "../include/fdf.h"
 
 static void	update_line_high(int *diff, int *x, int deltas[2], int xi);
 static void	update_line_low(int *diff, int *y, int deltas[2], int yi);

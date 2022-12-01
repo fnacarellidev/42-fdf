@@ -6,7 +6,7 @@
 #    By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 18:36:24 by fnacarel          #+#    #+#              #
-#    Updated: 2022/11/24 09:12:40 by fnacarel         ###   ########.fr        #
+#    Updated: 2022/12/01 19:13:33 by fnacarel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = fdf
@@ -14,7 +14,7 @@ LIBFDF = libfdf.a
 SRCS = bresenham.c fdf_utils00.c window_keyhook.c fdf_set_map.c connect_axis.c \
 	   isometric_projection.c input_validation.c \
 	   drawing_first_steps.c move_map.c zoom.c
-
+SRCPATH = $(addprefix src/, $(SRCS))
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 LIBFT_PATH = ./libs/libft
 GNL_PATH = ./libs/get_next_line
@@ -31,10 +31,11 @@ $(NAME) : $(OBJS)
 	@make -C $(GNL_PATH) --no-print-directory
 	@make -C $(MLX_PATH) --no-print-directory
 	@ar rcs $(LIBFDF) $(OBJS)
-	@cc $(FLAGS) $(OBJS) -o $(NAME) main.c $(PATH_LIBS) $(LIBS)
+	@cc $(FLAGS) $(OBJS) -o $(NAME) src/main.c $(PATH_LIBS) $(LIBS)
+	@rm $(OBJS) $(LIBFDF)
 
 $(OBJS) :
-	@cc $(FLAGS) -I ./ -c $(SRCS)
+	@cc $(FLAGS) -I ./include -c $(SRCPATH)
 
 clean :
 	@rm -f $(OBJS) $(LIBFDF)
@@ -49,9 +50,5 @@ fclean : clean
 	@make fclean -C $(MLX_PATH) --no-print-directory
 
 re : fclean all
-	@make clean
-
-rerun : fclean all
-	./$(NAME) ~/Downloads/maps/test_maps/42.fdf
 
 .PHONY : all clean fclean re

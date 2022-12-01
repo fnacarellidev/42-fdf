@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 12:13:55 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/24 09:16:37 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:58:49 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FDF_H
@@ -17,9 +17,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-# include "./libs/libft/libft.h"
-# include "./libs/mlx/mlx.h"
-# include "./libs/get_next_line/get_next_line.h"
+# include "../libs/libft/libft.h"
+# include "../libs/mlx/mlx.h"
+# include "../libs/get_next_line/get_next_line.h"
 
 # define WIDTH 1920
 # define HEIGHT 1080
@@ -72,10 +72,7 @@ void	init_loop_and_hooks(t_win *vars);
 void	transform_positions(t_pos **pos, t_map map);
 void	free_matrix(void **matrix);
 void	initialize_stuff(char *argv);
-void	ft_move_left(t_win *win);
-void	ft_move_down(t_win *win);
-void	ft_move_up(t_win *win);
-void	ft_move_right(t_win *win);
+void	ft_move_img(int keycode, t_win *win);
 void	put_img_to_window(t_win *win);
 void	zoom_in(t_win *win);
 void	zoom_out(t_win *win);

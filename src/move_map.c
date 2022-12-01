@@ -6,41 +6,24 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:35:27 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/24 09:02:45 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:57:31 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "fdf.h"
+#include "../include/fdf.h"
 
 static void	apply_to_each_point(t_win *win, int x_move, int y_move);
 
-void	ft_move_left(t_win *win)
+void	ft_move_img(int keycode, t_win *win)
 {
 	init_image(win);
-	apply_to_each_point(win, -8, 0);
-	connect_both_axis(win->pos_ptr, win, *(win->map_ptr));
-	put_img_to_window(win);
-}
-
-void	ft_move_down(t_win *win)
-{
-	init_image(win);
-	apply_to_each_point(win, 0, 8);
-	connect_both_axis(win->pos_ptr, win, *(win->map_ptr));
-	put_img_to_window(win);
-}
-
-void	ft_move_up(t_win *win)
-{
-	init_image(win);
-	apply_to_each_point(win, 0, -8);
-	connect_both_axis(win->pos_ptr, win, *(win->map_ptr));
-	put_img_to_window(win);
-}
-
-void	ft_move_right(t_win *win)
-{
-	init_image(win);
-	apply_to_each_point(win, 8, 0);
+	if (keycode == H_KEYCODE)
+		apply_to_each_point(win, -8, 0);
+	else if (keycode == J_KEYCODE)
+		apply_to_each_point(win, 0, 8);
+	else if (keycode == K_KEYCODE)
+		apply_to_each_point(win, 0, -8);
+	else if (keycode == L_KEYCODE)
+		apply_to_each_point(win, 8, 0);
 	connect_both_axis(win->pos_ptr, win, *(win->map_ptr));
 	put_img_to_window(win);
 }

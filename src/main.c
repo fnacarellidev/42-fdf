@@ -6,10 +6,10 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 19:05:51 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/24 08:52:47 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:58:20 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "fdf.h"
+#include "../include/fdf.h"
 
 void	my_mlx_pixel_put(t_win *win, int x, int y, int color)
 {

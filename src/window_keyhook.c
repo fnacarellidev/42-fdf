@@ -6,10 +6,10 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:55:26 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/24 09:15:09 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:58:28 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "fdf.h"
+#include "../include/fdf.h"
 
 int	ft_close(t_win *win)
 {
@@ -26,19 +26,13 @@ int	ft_keyhook(int keycode, t_win *win)
 {
 	if (keycode == ESC_KEYCODE)
 		ft_close(win);
-	else if (keycode == H_KEYCODE)
-		ft_move_left(win);
-	else if (keycode == J_KEYCODE)
-		ft_move_down(win);
-	else if (keycode == K_KEYCODE)
-		ft_move_up(win);
-	else if (keycode == L_KEYCODE)
-		ft_move_right(win);
+	else if (keycode == H_KEYCODE || keycode == J_KEYCODE
+		|| keycode == K_KEYCODE || keycode == L_KEYCODE)
+		ft_move_img(keycode, win);
 	else if (keycode == PLUS_KEYCODE)
 		zoom_in(win);
 	else if (keycode == MINUS_KEYCODE)
 		zoom_out(win);
-
 	return (0);
 }
 

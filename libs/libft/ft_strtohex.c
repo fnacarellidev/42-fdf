@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:38:46 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/08 17:12:49 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/12/01 15:24:29 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 long int	ft_hex_str_toi(char *str);

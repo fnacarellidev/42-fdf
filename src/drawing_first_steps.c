@@ -6,10 +6,10 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 00:14:35 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/24 08:53:06 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:57:07 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "fdf.h"
+#include "../include/fdf.h"
 
 static void	init_mlx(t_win *win);
 void		put_img_to_window(t_win *win);

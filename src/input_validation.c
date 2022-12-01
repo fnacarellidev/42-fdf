@@ -6,14 +6,14 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 20:03:46 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/24 00:22:48 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:58:07 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "fdf.h"
+#include "../include/fdf.h"
 
 static void	test_if_file_is_readable(char *argv);
 
-void		validate_input(int argc, char *argv)
+void	validate_input(int argc, char *argv)
 {
 	char	*str;
 
