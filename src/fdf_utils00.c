@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 18:43:19 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/12/01 18:57:16 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/12/01 21:59:19 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/fdf.h"
@@ -90,8 +90,8 @@ void	multiply_matrix(t_pos **pos, t_map map)
 		col = 0;
 		while (col < map.columns)
 		{
-			pos[row][col].x *= val / 1;
-			pos[row][col].y *= val / 1;
+			pos[row][col].x *= val;
+			pos[row][col].y *= val;
 			pos[row][col].z *= val / 2;
 			col++;
 		}

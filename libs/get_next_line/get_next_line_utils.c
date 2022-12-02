@@ -6,7 +6,7 @@
 /*   By: fnacarel <fnacarel@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 12:43:14 by fnacarel          #+#    #+#             */
-/*   Updated: 2022/11/24 03:36:09 by fnacarel         ###   ########.fr       */
+/*   Updated: 2022/12/01 22:00:40 by fnacarel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -53,7 +53,8 @@ char	*ft_strjoin_gnl(char *str, char *buf)
 	}
 	if (!str || !buf)
 		return (NULL);
-	finalstr = ft_calloc_gnl(sizeof(char), ft_strlen_gnl(str) + ft_strlen_gnl(buf) + 1);
+	finalstr = ft_calloc_gnl(sizeof(char), ft_strlen_gnl(str)
+			+ ft_strlen_gnl(buf) + 1);
 	if (!finalstr)
 		return (NULL);
 	ft_strcat(finalstr, str);
